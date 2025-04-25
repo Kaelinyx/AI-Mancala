@@ -1,7 +1,6 @@
 # Mancala AI Agent – ISAT 480 Final Project
 # Authors:
 #   Alex Macauley
-#   Mason Scofield
 
 ## Project Overview
 This project implements a basic two-player version of the game **Mancala (Kalah)** using Python.
