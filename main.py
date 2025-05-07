@@ -1,12 +1,13 @@
 #########################################
 #
-#   ISAT 480 - AI - Final Project
+#   ISAT 480 - AI - Final Project2
 #   main.py
 #   Main script that simulates a game and performs moves
 #
 #   Authors:
 #       Alex Macauley
 #       Mason Scofield
+#       Ben Fernandez
 #
 #########################################
 
@@ -31,8 +32,8 @@ def main():
     game = MancalaBoard()
 
     # Create AI agents
-    ai1 = AIPlayer(player_id=1, max_depth=6)
-    ai2 = AIPlayer(player_id=2, max_depth=6)
+    ai1 = AIPlayer(player_id=1, max_depth=10)
+    ai2 = AIPlayer(player_id=2, max_depth=10)
 
     # Game loop starts here
     while not game.is_game_over():
@@ -66,7 +67,18 @@ def main():
             print(f"AI {game.current_player} chose pit: {move}")
 
         # Apply the chosen move
+        prev_scores = game.get_score()
         game.make_move(move)
+        new_scores = game.get_score()
+        delta_p1 = new_scores[0] - prev_scores[0]
+        delta_p2 = new_scores[1] - prev_scores[1]
+        if delta_p1 > 0:
+            print(f"Player 1 gained {delta_p1} point(s)!")
+        if delta_p2 > 0:
+            print(f"Player 2 gained {delta_p2} point(s)!")
+
+        if game.current_player == (1 if mode == "1" and game.current_player == 1 else 2):
+            print(f"Player gets another turn!")
 
     # Game has ended
     print("\nGame over!")
