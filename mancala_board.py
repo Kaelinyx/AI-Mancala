@@ -7,6 +7,7 @@
 #   Authors:
 #       Alex Macauley
 #       Mason Scofield
+#       Ben Fernandez
 #
 #########################################
 
@@ -144,8 +145,15 @@ class MancalaBoard:
         Nicely prints the board in terminal layout.
         Player 2's pits are shown reversed to reflect board layout.
         """
-        print(f"P1 side: {self.board[0:6]}      P1 Store: {self.board[6]}")
-        print(f"P2 side: {self.board[12:6:-1]}      P2 Store: {self.board[13]}")
+        print("|-------|------------------------------------------|-------|")
+        print("|P2 Index's: (12)  (11)  (10)  (09)  (08)  (07)    |       |")
+        print("|-------|------------------------------------------|-------|")
+        print(f"|  P2   |-----{self.board[12]:02d}----{self.board[11]:02d}----{self.board[10]:02d}----{self.board[9]:02d}----{self.board[8]:02d}----{self.board[7]:02d}-----|  P1   |")
+        print("| Store |------------------------------------------| Store |")
+        print(f"|  {self.board[13]:02d}   |-----{self.board[0]:02d}----{self.board[1]:02d}----{self.board[2]:02d}----{self.board[3]:02d}----{self.board[4]:02d}----{self.board[5]:02d}-----|  {self.board[6]:02d}   |")
+        print("|-------|------------------------------------------|-------|")
+        print("|P1 Index's: (00)  (01)  (02)  (03)  (04)  (05)    |       |")
+        print("|-------|------------------------------------------|-------|")
 
     def get_score(self):
         """
@@ -155,3 +163,10 @@ class MancalaBoard:
             tuple: (player1_score, player2_score)
         """
         return self.board[6], self.board[13]
+    
+def main():
+    m = MancalaBoard()
+    m.print_board()
+
+if __name__ == "__main__":
+    main()
